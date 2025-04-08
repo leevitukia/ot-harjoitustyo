@@ -1,9 +1,10 @@
 import unittest
-from flash_card import FlashCard
+from flash_card import MultipleChoiceFlashCard
 
-class TestFlashCard(unittest.TestCase):
+class TestMultipleChoiceFlashCard(unittest.TestCase):
     def setUp(self):
-        self.card = FlashCard("Hund", "Dog")
+        self.choices = ["Dog", "Koira", "Blank", "Blank"]
+        self.card = MultipleChoiceFlashCard("Hund", self.choices, "Dog")
 
     def test_question_correct(self):
         self.assertEqual(self.card.question, "Hund")
