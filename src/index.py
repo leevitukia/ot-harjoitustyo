@@ -1,8 +1,7 @@
-import tkinter as tk
-import ui
+from ui import UI
 
 def main():
-    ui.create_ui()
+    UI()
 
 if __name__ == '__main__':
     main()
