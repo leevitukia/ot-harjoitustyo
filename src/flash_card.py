@@ -12,6 +12,16 @@ class FlashCard:
 
     def check_answer(self, answer: str) -> bool:
         return answer.strip().lower() == self.answer.strip().lower()
+    
+    def __eq__(self, other):
+        if not isinstance(other, FlashCard):
+            return False
+        return (
+            self.question == other.question and
+            self.answer == other.answer and
+            self.type == other.type
+        )
+
 
 class MultipleChoiceFlashCard(FlashCard):
     def __init__(self, question: str, choices: list[str], answer: str):
@@ -20,3 +30,11 @@ class MultipleChoiceFlashCard(FlashCard):
         super().__init__(question, answer)
         self.choices: list[str] = choices
         self.type = CardType.MULTIPLE_CHOICE
+
+    def __eq__(self, other):
+        if not isinstance(other, MultipleChoiceFlashCard):
+            return False
+        return (
+            super().__eq__(other) and
+            self.choices == other.choices
+        )
