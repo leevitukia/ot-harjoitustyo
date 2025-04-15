@@ -61,7 +61,7 @@ class CreateCardView(QWidget):
                 option_layout = QHBoxLayout()
                 option_label = QLabel(f"Option {i + 2}:")
                 option_input = QLineEdit()
-                self.answer_inputs.append(option_input)
+                answer_inputs.append(option_input)
                 option_layout.addWidget(option_label)
                 option_layout.addWidget(option_input)
                 self.content_layout.addLayout(option_layout)
