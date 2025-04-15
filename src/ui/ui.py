@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QPushButton, # pylint: disable=no-name-in-module
                               QLabel,#pylint is complaining for no reason
-                              QVBoxLayout, QHBoxLayout, QLineEdit,
-                              QStackedWidget)
+                              QVBoxLayout, QToolBar, QLineEdit,
+                              QStackedWidget, QMenu)
 from deck import Deck
 from flash_card import CardType
 from ui.menu_view import MenuView
@@ -10,6 +10,7 @@ from ui.create_card_view import CreateCardView
 from ui.card_selection_view import CardSelectionView
 from ui.decks_view import DecksView
 from ui.card_view import CardView
+import json_helpers
 
 class FlashcardApp(QMainWindow):
     def __init__(self):
@@ -40,6 +41,7 @@ class FlashcardApp(QMainWindow):
         self.stack.addWidget(self.decks_view)
         self.stack.addWidget(self.card_view)
 
+        self._create_top_bar()
         self.show_menu()
 
     def show_menu(self):
@@ -68,6 +70,21 @@ class FlashcardApp(QMainWindow):
 
     def add_deck(self, deck: Deck):
         self.decks.append(deck)
+
+    def _load_decks(self):
+        loaded_decks: list[Deck] = json_helpers.load_decks_from_file()
+        if len(loaded_decks) != 0:
+            self.decks = loaded_decks
+
+    def _create_top_bar(self):
+        menu_bar = self.menuBar()
+
+        file_menu = QMenu("File", self)
+        menu_bar.addMenu(file_menu)
+        save_decks = file_menu.addAction("Save Decks")
+        save_decks.triggered.connect(lambda: json_helpers.save_decks_to_file(self.decks))
+        load_decks = file_menu.addAction("Load Decks")
+        load_decks.triggered.connect(self._load_decks)
 
 def create_ui():
     app = QApplication([])

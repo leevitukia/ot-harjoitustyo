@@ -45,6 +45,10 @@ def save_decks_to_file(decks: list[Deck]) -> None:
         file.write(json_str)
 
 def load_decks_from_file() -> list[Deck]:
-    with open("saved_decks.json", "r", encoding="utf-8") as file:
-        json_str: str = file.read()
-        return json_to_decks(json_str)
+    try:
+        with open("saved_decks.json", "r", encoding="utf-8") as file:
+            json_str: str = file.read()
+            return json_to_decks(json_str)
+    except FileNotFoundError:
+        return []
+    
