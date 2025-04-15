@@ -1,4 +1,4 @@
-from flash_card import FlashCard
+from entities.flash_card import FlashCard
 
 class Deck:
     def __init__(self, name: str=""):

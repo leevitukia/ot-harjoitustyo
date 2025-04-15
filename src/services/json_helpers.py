@@ -1,6 +1,6 @@
 import json
-from deck import Deck
-from flash_card import FlashCard, MultipleChoiceFlashCard, CardType
+from entities.deck import Deck
+from entities.flash_card import FlashCard, MultipleChoiceFlashCard, CardType
 
 class DeckEncoder(json.JSONEncoder):
     def default(self, o):

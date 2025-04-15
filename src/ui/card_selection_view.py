@@ -1,8 +1,8 @@
 from PySide6.QtWidgets import (QWidget, QPushButton, # pylint: disable=no-name-in-module
                               QLabel,#pylint is complaining for no reason
                               QVBoxLayout, QHBoxLayout)
-from deck import Deck
-from flash_card import CardType
+from entities.deck import Deck
+from entities.flash_card import CardType
 
 class CardSelectionView(QWidget):
     def __init__(self, parent):

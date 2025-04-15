@@ -2,8 +2,8 @@ from PySide6.QtWidgets import (QWidget, QPushButton, # pylint: disable=no-name-i
                               QLabel,#pylint is complaining for no reason
                               QVBoxLayout, QHBoxLayout)
 
-from deck import Deck
-from flash_card import FlashCard, MultipleChoiceFlashCard
+from entities.deck import Deck
+from entities.flash_card import FlashCard, MultipleChoiceFlashCard
 from ui.ui_utils import clear_layout
 
 class CardView(QWidget):

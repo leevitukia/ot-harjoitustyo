@@ -1,8 +1,8 @@
 import unittest
 import json
-from deck import Deck
-from flash_card import FlashCard, MultipleChoiceFlashCard, CardType
-import json_helpers
+from entities.deck import Deck
+from entities.flash_card import FlashCard, MultipleChoiceFlashCard, CardType
+import services.json_helpers as json_helpers
 
 class TestHelpers(unittest.TestCase):
     def setUp(self):

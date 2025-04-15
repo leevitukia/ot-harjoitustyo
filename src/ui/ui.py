@@ -1,16 +1,16 @@
 from PySide6.QtWidgets import QApplication, QMainWindow, QStackedWidget, QMenu # pylint: disable=no-name-in-module
-from deck import Deck
-from flash_card import CardType
+from entities.deck import Deck
+from entities.flash_card import CardType
 from ui.menu_view import MenuView
 from ui.create_deck_view import CreateDeckView
 from ui.create_card_view import CreateCardView
 from ui.card_selection_view import CardSelectionView
 from ui.decks_view import DecksView
 from ui.card_view import CardView
-import json_helpers
+import services.json_helpers as json_helpers
 
 class FlashcardApp(QMainWindow):
-    def __init__(self):
+    def __init__(self): # TODO_: split to multiple functions
         super().__init__()
         self.decks: list[Deck] = []
 

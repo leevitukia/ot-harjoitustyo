@@ -1,5 +1,5 @@
 import unittest
-from flash_card import MultipleChoiceFlashCard
+from entities.flash_card import MultipleChoiceFlashCard
 
 class TestMultipleChoiceFlashCard(unittest.TestCase):
     def setUp(self):

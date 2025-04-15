@@ -1,5 +1,5 @@
 import unittest
-from flash_card import FlashCard
+from entities.flash_card import FlashCard
 
 class TestFlashCard(unittest.TestCase):
     def setUp(self):

@@ -1,6 +1,6 @@
 import unittest
-from deck import Deck
-from flash_card import FlashCard
+from entities.deck import Deck
+from entities.flash_card import FlashCard
 
 class TestDeck(unittest.TestCase):
     def setUp(self):

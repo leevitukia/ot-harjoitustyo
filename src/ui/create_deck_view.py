@@ -1,10 +1,10 @@
 from PySide6.QtWidgets import (QWidget, QPushButton, # pylint: disable=no-name-in-module
                               QLabel, QVBoxLayout,
                               QHBoxLayout, QLineEdit)
-from deck import Deck
+from entities.deck import Deck
 
 class CreateDeckView(QWidget):
-    def __init__(self, parent):
+    def __init__(self, parent): # TODO_: split to multiple functions
         super().__init__()
         self.parent = parent
         self.deck = None
