@@ -17,3 +17,11 @@ class TestMultipleChoiceFlashCard(unittest.TestCase):
 
     def test_check_incorrect_answer(self):
         self.assertFalse(self.card.check_answer("koira"))
+
+    def test_eq_op(self):
+        self.assertNotEqual(self.card, list())
+
+    def test_answer_not_in_choices(self):
+        with self.assertRaises(ValueError):
+            MultipleChoiceFlashCard("Hund", self.choices, "Cat")
+

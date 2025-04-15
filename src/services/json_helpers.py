@@ -39,14 +39,14 @@ def json_to_decks(json_str: str) -> list[Deck]:
         decks.append(deck)
     return decks
 
-def save_decks_to_file(decks: list[Deck]) -> None:
+def save_decks_to_file(decks: list[Deck], file_name: str = "saved_decks.json") -> None:
     json_str: str = decks_to_json(decks)
-    with open("saved_decks.json", "w", encoding="utf-8") as file:
+    with open(file_name, "w", encoding="utf-8") as file:
         file.write(json_str)
 
-def load_decks_from_file() -> list[Deck]:
+def load_decks_from_file(file_name: str = "saved_decks.json") -> list[Deck]:
     try:
-        with open("saved_decks.json", "r", encoding="utf-8") as file:
+        with open(file_name, "r", encoding="utf-8") as file:
             json_str: str = file.read()
             return json_to_decks(json_str)
     except FileNotFoundError:

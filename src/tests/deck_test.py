@@ -23,3 +23,6 @@ class TestDeck(unittest.TestCase):
         name: str = "Test"
         deck = Deck(name)
         self.assertEqual(deck.name, name)
+    
+    def test_eq_op(self):
+        self.assertNotEqual(self.deck, list())

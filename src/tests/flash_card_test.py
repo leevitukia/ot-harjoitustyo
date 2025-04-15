@@ -16,3 +16,6 @@ class TestFlashCard(unittest.TestCase):
 
     def test_check_incorrect_answer(self):
         self.assertFalse(self.card.check_answer("koira"))
+
+    def test_eq_op(self):
+        self.assertNotEqual(self.card, list())
