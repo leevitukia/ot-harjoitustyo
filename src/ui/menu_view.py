@@ -1,7 +1,4 @@
-from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QPushButton, # pylint: disable=no-name-in-module
-                              QLabel,#pylint is complaining for no reason
-                              QVBoxLayout, QHBoxLayout, QLineEdit,
-                              QStackedWidget)
+from PySide6.QtWidgets import (QWidget, QPushButton, QVBoxLayout) # pylint: disable=no-name-in-module
 
 class MenuView(QWidget):
     def __init__(self, parent):

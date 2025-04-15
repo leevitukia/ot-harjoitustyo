@@ -1,7 +1,4 @@
-from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QPushButton, # pylint: disable=no-name-in-module
-                              QLabel,#pylint is complaining for no reason
-                              QVBoxLayout, QToolBar, QLineEdit,
-                              QStackedWidget, QMenu)
+from PySide6.QtWidgets import QApplication, QMainWindow, QStackedWidget, QMenu # pylint: disable=no-name-in-module
 from deck import Deck
 from flash_card import CardType
 from ui.menu_view import MenuView

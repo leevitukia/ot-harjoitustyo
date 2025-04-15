@@ -1,10 +1,9 @@
-from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QPushButton, # pylint: disable=no-name-in-module
+from PySide6.QtWidgets import (QWidget, QPushButton, # pylint: disable=no-name-in-module
                               QLabel,#pylint is complaining for no reason
-                              QVBoxLayout, QHBoxLayout, QLineEdit,
-                              QStackedWidget)
+                              QVBoxLayout, QHBoxLayout)
 
 from deck import Deck
-from flash_card import FlashCard, MultipleChoiceFlashCard, CardType
+from flash_card import FlashCard, MultipleChoiceFlashCard
 from ui.ui_utils import clear_layout
 
 class CardView(QWidget):
@@ -25,7 +24,6 @@ class CardView(QWidget):
         self.view_layout.addLayout(self.card_layout)
         self.view_layout.addLayout(self.nav_buttons)
         self.setLayout(self.view_layout)
-        
 
     def show_card(self, index: int):
         clear_layout(self.card_layout)
@@ -38,14 +36,14 @@ class CardView(QWidget):
         else:
             label = QLabel(card.question)
             self.card_layout.addWidget(label)
-            for i, option in enumerate(card.choices):
+            for option in card.choices:
                 btn = QPushButton(option)
                 correct_answer: bool = option == card.answer
-                btn.clicked.connect(lambda _, a=correct_answer: 
+                btn.clicked.connect(lambda _, a=correct_answer:
                                     self._flip_card(a)
                                     )
                 self.card_layout.addWidget(btn)
-            
+
         self._create_nav_buttons()
 
     def _flip_card(self, answered_correctly: bool = False):
@@ -58,7 +56,7 @@ class CardView(QWidget):
         else:
             clear_layout(self.card_layout)
             label = QLabel()
-            if(answered_correctly):
+            if answered_correctly:
                 label.setText("Correct!")
             else:
                 label.setText(f"Incorrect! The answer is {card.answer}")
@@ -78,5 +76,3 @@ class CardView(QWidget):
             next_btn = QPushButton("Next card")
             next_btn.clicked.connect(lambda: self.show_card(self.current_index + 1))
             self.nav_buttons.addWidget(next_btn)
-
-        

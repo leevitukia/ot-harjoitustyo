@@ -1,7 +1,7 @@
-from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QPushButton, # pylint: disable=no-name-in-module
+from PySide6.QtWidgets import (QWidget, QPushButton, # pylint: disable=no-name-in-module
                               QLabel,#pylint is complaining for no reason
-                              QVBoxLayout, QHBoxLayout, QLineEdit,
-                              QStackedWidget)
+                              QVBoxLayout, QHBoxLayout,
+                              QLineEdit)
 from deck import Deck
 from flash_card import FlashCard, MultipleChoiceFlashCard, CardType
 from ui.ui_utils import clear_layout
@@ -41,22 +41,21 @@ class CreateCardView(QWidget):
         self._create_back_button()
         question_layout = QHBoxLayout()
         question_label = QLabel("Question:")
-        self.question_input = QLineEdit()
+        question_input = QLineEdit()
         question_layout.addWidget(question_label)
-        question_layout.addWidget(self.question_input)
+        question_layout.addWidget(question_input)
         self.content_layout.addLayout(question_layout)
 
-        self.answer_inputs = []
+        answer_inputs = []
 
         answer_layout = QHBoxLayout()
         answer_label = QLabel("Correct answer:")
-        self.correct_answer_input = QLineEdit()
-        self.answer_inputs.append(self.correct_answer_input)
+        correct_answer_input = QLineEdit()
+        answer_inputs.append(correct_answer_input)
         answer_layout.addWidget(answer_label)
-        answer_layout.addWidget(self.correct_answer_input)
+        answer_layout.addWidget(correct_answer_input)
         self.content_layout.addLayout(answer_layout)
 
-        print(self.card_type.value)
         if self.card_type == CardType.MULTIPLE_CHOICE:
             for i in range(3):
                 option_layout = QHBoxLayout()
@@ -68,17 +67,20 @@ class CreateCardView(QWidget):
                 self.content_layout.addLayout(option_layout)
 
         add_btn = QPushButton("Add card to deck")
-        add_btn.clicked.connect(self._add_card_to_deck)
+        add_btn.clicked.connect(
+            lambda: self._add_card_to_deck(
+                question_input.text(),
+                correct_answer_input.text(),
+                answer_inputs
+                )
+            )
         self.content_layout.addWidget(add_btn)
 
-    def _add_card_to_deck(self):
-        question = self.question_input.text()
-        correct_answer = self.correct_answer_input.text()
-
+    def _add_card_to_deck(self, question: str, correct_answer: str, answer_inputs: list[str]):
         if self.card_type == CardType.STANDARD:
             card = FlashCard(question, correct_answer)
         else:
-            choices = [input.text() for input in self.answer_inputs]
+            choices = [input.text() for input in answer_inputs]
             card = MultipleChoiceFlashCard(question, choices, correct_answer)
 
         self.deck.add_card(card)

@@ -51,4 +51,3 @@ def load_decks_from_file() -> list[Deck]:
             return json_to_decks(json_str)
     except FileNotFoundError:
         return []
-    

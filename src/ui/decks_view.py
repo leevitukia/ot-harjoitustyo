@@ -1,7 +1,5 @@
-from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QPushButton, # pylint: disable=no-name-in-module
-                              QLabel,#pylint is complaining for no reason
-                              QVBoxLayout, QHBoxLayout, QLineEdit,
-                              QStackedWidget)
+from PySide6.QtWidgets import (QWidget, QPushButton, # pylint: disable=no-name-in-module
+                              QVBoxLayout)
 from .ui_utils import clear_layout
 
 class DecksView(QWidget):

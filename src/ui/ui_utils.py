@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QVBoxLayout, QWidget
+from PySide6.QtWidgets import QVBoxLayout, QWidget # pylint: disable=no-name-in-module
 
 def clear_layout(layout: QVBoxLayout):
     while layout.count() > 0:

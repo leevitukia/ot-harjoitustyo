@@ -1,4 +1,4 @@
-import ui.ui as ui
+from ui import ui
 
 def main():
     ui.create_ui()

@@ -1,10 +1,8 @@
-from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QPushButton, # pylint: disable=no-name-in-module
+from PySide6.QtWidgets import (QWidget, QPushButton, # pylint: disable=no-name-in-module
                               QLabel,#pylint is complaining for no reason
-                              QVBoxLayout, QHBoxLayout, QLineEdit,
-                              QStackedWidget)
+                              QVBoxLayout, QHBoxLayout)
 from deck import Deck
-from flash_card import FlashCard, MultipleChoiceFlashCard, CardType
-from .ui_utils import clear_layout
+from flash_card import CardType
 
 class CardSelectionView(QWidget):
     def __init__(self, parent):
@@ -38,8 +36,3 @@ class CardSelectionView(QWidget):
 
     def set_deck(self, deck: Deck):
         self.deck = deck
-        
-
-
-    
-    
