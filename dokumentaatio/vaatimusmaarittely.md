@@ -13,6 +13,6 @@ The application only has one user role which can both create decks and play/view
 - The user can go through the deck in order
 
 ## Future development ideas
-- Some kind of statistics tracking
-- Importing/exporting decks
-- Multiple kinds of cards instead of just the basic type with a question on one side and the answer on the other
+- Some kind of statistics tracking 
+- Importing/exporting decks [Done]
+- Multiple kinds of cards instead of just the basic type with a question on one side and the answer on the other [Done]

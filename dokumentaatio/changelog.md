@@ -12,3 +12,8 @@
 
 - The user can create multiple choice flashcards
 - The user can answer multiple choice flashcards and see if they answered correctly or not
+
+## Week 5
+
+- Switched from Tkinter to PySide6, the UI still looks ugly but at least it looks vaguely modern now
+- Added a way to save and load decks.
