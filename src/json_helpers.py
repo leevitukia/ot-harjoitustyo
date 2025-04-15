@@ -38,3 +38,13 @@ def json_to_decks(json_str: str) -> list[Deck]:
             deck.add_card(card)
         decks.append(deck)
     return decks
+
+def save_decks_to_file(decks: list[Deck]) -> None:
+    json_str: str = decks_to_json(decks)
+    with open("saved_decks.json", "w", encoding="utf-8") as file:
+        file.write(json_str)
+
+def load_decks_from_file() -> list[Deck]:
+    with open("saved_decks.json", "r", encoding="utf-8") as file:
+        json_str: str = file.read()
+        return json_to_decks(json_str)

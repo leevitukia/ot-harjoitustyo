@@ -6,9 +6,11 @@ authors = ["Leevi <leevitukia@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = ">=3.10,<3.14"
+
 coverage = "^7.8.0"
 invoke = "^2.2.0"
+pyside6 = "^6.9.0"
 
 
 [tool.poetry.group.dev.dependencies]

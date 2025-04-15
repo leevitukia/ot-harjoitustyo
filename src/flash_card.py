@@ -1,8 +1,8 @@
 from enum import Enum
 
 class CardType(Enum):
-    STANDARD = "standard"
-    MULTIPLE_CHOICE = "multiple_choice"
+    STANDARD = "Standard"
+    MULTIPLE_CHOICE = "Multiple choice"
 
 class FlashCard:
     def __init__(self, question: str, answer: str):
@@ -12,7 +12,7 @@ class FlashCard:
 
     def check_answer(self, answer: str) -> bool:
         return answer.strip().lower() == self.answer.strip().lower()
-    
+
     def __eq__(self, other):
         if not isinstance(other, FlashCard):
             return False

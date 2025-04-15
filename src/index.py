@@ -1,7 +1,7 @@
-from ui import UI
+import ui.ui as ui
 
 def main():
-    UI()
+    ui.create_ui()
 
 if __name__ == '__main__':
     main()
