@@ -1,5 +1,6 @@
 from PySide6.QtWidgets import (QWidget, QPushButton, # pylint: disable=no-name-in-module
-                              QVBoxLayout)
+                              QVBoxLayout, QHBoxLayout,
+                              QLabel)
 from .ui_utils import clear_layout
 
 class DecksView(QWidget):
@@ -28,6 +29,18 @@ class DecksView(QWidget):
                 name = f"Unnamed deck {unnamed_deck_counter}"
                 unnamed_deck_counter += 1
 
-            deck_btn = QPushButton(name)
-            deck_btn.clicked.connect(lambda _, idx=i: self.parent.show_deck(idx))
-            self.decks_container.addWidget(deck_btn)
+            deck_layout = QHBoxLayout()
+
+            deck_label = QLabel(name)
+            deck_layout.addWidget(deck_label)
+
+            flip_btn = QPushButton("Flip / multiple choice") #TODOO give stuff smarter names
+            flip_btn.clicked.connect(lambda _, idx=i: self.parent.show_deck(idx))
+            deck_layout.addWidget(flip_btn)
+
+            exact_answer_btn = QPushButton("Exact answer")
+            exact_answer_btn.clicked.connect(lambda _, idx=i: 
+                                             self.parent.show_answer_card_view(idx))
+            deck_layout.addWidget(exact_answer_btn)
+
+            self.decks_container.addLayout(deck_layout)

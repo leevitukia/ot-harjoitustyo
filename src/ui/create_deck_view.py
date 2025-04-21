@@ -24,7 +24,7 @@ class CreateDeckView(QWidget):
 
         buttons_layout = QHBoxLayout()
         add_card_btn = QPushButton("Add card to deck")
-        add_card_btn.clicked.connect(lambda: self.parent.show_card_selection_view(self.deck))
+        add_card_btn.clicked.connect(self.switch_to_card_creation_view)
 
         finish_btn = QPushButton("Finish deck")
         finish_btn.clicked.connect(self.finish_deck)
@@ -37,6 +37,10 @@ class CreateDeckView(QWidget):
         self.setLayout(layout)
 
     #show_create_card_view(self, deck: Deck, card_type: CardType = None):
+
+    def switch_to_card_creation_view(self):
+        self.deck.name = self.name_input.text()
+        self.parent.show_card_selection_view(self.deck)
 
     def set_deck(self, deck: Deck):
         self.deck = deck

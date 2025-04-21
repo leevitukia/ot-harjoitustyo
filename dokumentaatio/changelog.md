@@ -17,3 +17,8 @@
 
 - Switched from Tkinter to PySide6, the UI still looks ugly but at least it looks vaguely modern now
 - Added a way to save and load decks.
+
+## Week 6
+
+- Added a mode where you answer the flashcards by typing the answer
+- Added a very basic algorithm for showing cards that you answer incorrectly often first.

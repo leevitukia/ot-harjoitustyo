@@ -9,9 +9,16 @@ class FlashCard:
         self.question = question
         self.answer = answer
         self.type = CardType.STANDARD
+        self.successes = 0
+        self.fails = 0
 
     def check_answer(self, answer: str) -> bool:
-        return answer.strip().lower() == self.answer.strip().lower()
+        answer_is_correct: bool = answer.strip().lower() == self.answer.strip().lower()
+        if answer_is_correct:
+            self.successes += 1
+        else:
+            self.fails += 1
+        return answer_is_correct 
 
     def __eq__(self, other):
         if not isinstance(other, FlashCard):

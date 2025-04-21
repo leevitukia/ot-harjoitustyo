@@ -7,7 +7,7 @@ class MenuView(QWidget):
 
         layout = QVBoxLayout()
 
-        view_decks_btn = QPushButton("View decks")
+        view_decks_btn = QPushButton("Decks")
         create_deck_btn = QPushButton("Create deck")
 
         view_decks_btn.clicked.connect(self.parent.show_decks_view)

@@ -12,7 +12,9 @@ class DeckEncoder(json.JSONEncoder):
         if isinstance(o, FlashCard):
             card: dict = {"card_type": o.type.name,
                           "question": o.question,
-                          "answer": o.answer, 
+                          "answer": o.answer,
+                          "successes": o.successes,
+                          "fails": o.fails, 
                           }
             if isinstance(o, MultipleChoiceFlashCard):
                 card["choices"] = o.choices

@@ -11,6 +11,7 @@ class AnswerCardView(QWidget):
         super().__init__()
         self.parent = parent
         self.deck: Deck = None
+        self.sorted_map: dict[int, int] = None
         self.current_index: int = 0
         self.flipped: bool = False
         self.view_layout = QVBoxLayout()
@@ -27,20 +28,25 @@ class AnswerCardView(QWidget):
 
     def show_card(self, index: int):
         clear_layout(self.card_layout)
-        card: FlashCard = self.deck.cards[index]
+        sorted_index: int = self.sorted_map[index]
+        card: FlashCard = self.deck.cards[sorted_index]
         self.current_index = index
 
         question_label = QLabel(card.question)
 
+        layout = QHBoxLayout()
         answer_label = QLabel("Answer:")
         answer_input = QLineEdit()
-        submit_btn = QPushButton()
+
+        layout.addWidget(answer_label)
+        layout.addWidget(answer_input)
+
+        submit_btn = QPushButton("Submit")
 
         submit_btn.clicked.connect(lambda: self._submit_answer(answer_input.text()))
 
         self.card_layout.addWidget(question_label)
-        self.card_layout.addWidget(answer_label)
-        self.card_layout.addWidget(answer_input)
+        self.card_layout.addLayout(layout)
         self.card_layout.addWidget(submit_btn)
 
         self._create_nav_buttons()
@@ -58,6 +64,12 @@ class AnswerCardView(QWidget):
 
     def set_deck(self, deck: Deck):
         self.deck = deck
+        self.sorted_map: dict[int, int] = {}
+        sorted_cards = sorted(deck.cards, key=lambda x: 
+                x.successes / max(x.successes + x.fails, 1))
+        for i, card in enumerate(deck.cards):
+            index = sorted_cards.index(card) # O(n^2) but that's a problem for later
+            self.sorted_map[index] = i
 
     def _create_nav_buttons(self):
         clear_layout(self.nav_buttons)

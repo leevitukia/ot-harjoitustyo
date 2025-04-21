@@ -36,7 +36,7 @@ class CreateCardView(QWidget):
         )
         self.content_layout.addWidget(menu_btn)
 
-    def _setup_ui(self): # TODO: split to multiple functions
+    def _setup_ui(self): # TODOO: split to multiple functions
         clear_layout(self.content_layout)
         self._create_back_button()
         question_layout = QHBoxLayout()

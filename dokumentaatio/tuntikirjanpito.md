@@ -17,5 +17,6 @@
 | 4/14  | 10    | Created functions for saving/loading decks from a file |
 | 4/15  | 15    | Implemented saving/loading decks to the UI |
 | 4/15  | 45    | Finished porting the UI to PySide6 |
-| yht (min)   | 285 | | 
-| yht (h)   | 4.75 | | 
+| 4/21  | 25    | Created a card mode where you answer them by typing the answer |
+| yht (min)   | 310 | | 
+| yht (h)   | 5.17 | | 
