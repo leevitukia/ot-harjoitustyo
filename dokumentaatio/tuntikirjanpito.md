@@ -17,6 +17,10 @@
 | 4/14  | 10    | Created functions for saving/loading decks from a file |
 | 4/15  | 15    | Implemented saving/loading decks to the UI |
 | 4/15  | 45    | Finished porting the UI to PySide6 |
-| 4/21  | 25    | Created a card mode where you answer them by typing the answer |
-| yht (min)   | 310 | | 
-| yht (h)   | 5.17 | | 
+| 4/20  | 15    | Created a card mode where you answer them by typing the answer |
+| 4/21  | 15    | Created a very basic algorithm for showing cards that you get wrong often first |
+| 4/29  | 5    | Created an alert method that creates a popup  |
+|   | 5    | Prevented empty cards and decks from being created |
+|   | 2   | Fixed the json saving test |
+| yht (min)   | 315 | | 
+| yht (h)   | 5.25 | | 
