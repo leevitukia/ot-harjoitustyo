@@ -2,6 +2,7 @@ from PySide6.QtWidgets import (QWidget, QPushButton, # pylint: disable=no-name-i
                               QLabel, QVBoxLayout,
                               QHBoxLayout, QLineEdit)
 from entities.deck import Deck
+from ui.ui_utils import create_alert
 
 class CreateDeckView(QWidget):
     def __init__(self, parent): # TODO_: split to multiple functions
@@ -47,6 +48,9 @@ class CreateDeckView(QWidget):
         self.name_input.setText(deck.name)
 
     def finish_deck(self):
+        if self.deck.card_count() == 0:
+            create_alert("Can't create empty deck")
+            return
         self.deck.name = self.name_input.text()
         if self.deck not in self.parent.decks:
             self.parent.add_deck(self.deck)

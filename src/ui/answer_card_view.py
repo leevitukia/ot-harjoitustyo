@@ -65,7 +65,7 @@ class AnswerCardView(QWidget):
     def set_deck(self, deck: Deck):
         self.deck = deck
         self.sorted_map: dict[int, int] = {}
-        sorted_cards = sorted(deck.cards, key=lambda x: 
+        sorted_cards = sorted(deck.cards, key=lambda x:
                 x.successes / max(x.successes + x.fails, 1))
         for i, card in enumerate(deck.cards):
             index = sorted_cards.index(card) # O(n^2) but that's a problem for later

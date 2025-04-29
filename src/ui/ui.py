@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QApplication, QMainWindow, QStackedWidget, QMenu # pylint: disable=no-name-in-module
+from PySide6.QtWidgets import QApplication, QMainWindow, QStackedWidget, QMenu, QMessageBox # pylint: disable=no-name-in-module
 from entities.deck import Deck
 from entities.flash_card import CardType
 from ui.menu_view import MenuView
