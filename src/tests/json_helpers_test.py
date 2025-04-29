@@ -17,9 +17,9 @@ class TestHelpers(unittest.TestCase):
         deck.add_card(MultipleChoiceFlashCard("Frukt", ["Fruit", "Dog", "Apple", "Vegetable"], "Fruit"))
         self.decks.append(deck)
 
-        self.json_str: str = '[{"name": "Swedish 1", "cards": [{"card_type": "STANDARD", "question": "Frukt", "answer": "Fruit"}]}, ' \
-        '{"name": "Swedish 2", "cards": [{"card_type": "MULTIPLE_CHOICE", "question": "Frukt", "answer": "Fruit", "choices": ' \
-        '["Fruit", "Dog", "Apple", "Vegetable"]}]}]'
+        self.json_str:str = '[{"name": "Swedish 1", "cards": [{"card_type": "STANDARD", "question": "Frukt", "answer": "Fruit", "successes": 0, "fails": 0}]},' \
+        ' {"name": "Swedish 2", "cards": [{"card_type": "MULTIPLE_CHOICE", "question": "Frukt", "answer": "Fruit", "successes": 0, "fails": 0, ' \
+        '"choices": ["Fruit", "Dog", "Apple", "Vegetable"]}]}]'
 
     def tearDown(self):
         if os.path.exists(self.file_name):
