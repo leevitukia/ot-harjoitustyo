@@ -4,7 +4,7 @@ from PySide6.QtWidgets import (QWidget, QPushButton, # pylint: disable=no-name-i
                               QLineEdit)
 from entities.deck import Deck
 from entities.flash_card import FlashCard, MultipleChoiceFlashCard, CardType
-from ui.ui_utils import clear_layout
+from ui.ui_utils import clear_layout, create_alert
 
 class CreateCardView(QWidget):
     def __init__(self, parent):
@@ -77,9 +77,15 @@ class CreateCardView(QWidget):
         self.content_layout.addWidget(add_btn)
 
     def _add_card_to_deck(self, question: str, correct_answer: str, answer_inputs: list[str]):
+        if "" in [question.strip(), correct_answer.strip()]:
+            create_alert("Can't create a card with blank fields")
+            return
         if self.card_type == CardType.STANDARD:
             card = FlashCard(question, correct_answer)
         else:
+            if "" in [answer.strip() for answer in answer_inputs]:
+                create_alert("Can't create a card with blank fields")
+                return
             choices = [input.text() for input in answer_inputs]
             card = MultipleChoiceFlashCard(question, choices, correct_answer)
 
