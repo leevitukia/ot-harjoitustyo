@@ -48,32 +48,36 @@ class CreateCardView(QWidget):
 
         answer_inputs = []
 
+        click_lambda = lambda: self._add_card_to_deck(
+            question_input.text(),
+            correct_answer_input.text(),
+            answer_inputs
+            )
+
         answer_layout = QHBoxLayout()
         answer_label = QLabel("Correct answer:")
         correct_answer_input = QLineEdit()
+        correct_answer_input.returnPressed.connect(click_lambda)
         answer_inputs.append(correct_answer_input)
         answer_layout.addWidget(answer_label)
         answer_layout.addWidget(correct_answer_input)
         self.content_layout.addLayout(answer_layout)
+
+        
 
         if self.card_type == CardType.MULTIPLE_CHOICE:
             for i in range(3):
                 option_layout = QHBoxLayout()
                 option_label = QLabel(f"Option {i + 2}:")
                 option_input = QLineEdit()
+                option_input.returnPressed.connect(click_lambda)
                 answer_inputs.append(option_input)
                 option_layout.addWidget(option_label)
                 option_layout.addWidget(option_input)
                 self.content_layout.addLayout(option_layout)
 
         add_btn = QPushButton("Add card to deck")
-        add_btn.clicked.connect(
-            lambda: self._add_card_to_deck(
-                question_input.text(),
-                correct_answer_input.text(),
-                answer_inputs
-                )
-            )
+        add_btn.clicked.connect(click_lambda)
         self.content_layout.addWidget(add_btn)
 
     def _add_card_to_deck(self, question: str, correct_answer: str, answer_inputs: list[str]):

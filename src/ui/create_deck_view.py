@@ -19,6 +19,7 @@ class CreateDeckView(QWidget):
         name_layout = QHBoxLayout()
         name_label = QLabel("Deck name:")
         self.name_input = QLineEdit()
+        self.name_input.returnPressed.connect(self.finish_deck)
         name_layout.addWidget(name_label)
         name_layout.addWidget(self.name_input)
         layout.addLayout(name_layout)
