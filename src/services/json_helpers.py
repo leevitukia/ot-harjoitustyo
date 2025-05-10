@@ -1,7 +1,7 @@
 import json
 from entities.deck import Deck
 from entities.flash_card import FlashCard, MultipleChoiceFlashCard, CardType
-
+import ui.ui_utils
 class DeckEncoder(json.JSONEncoder):
     def default(self, o):
         if isinstance(o, Deck):
@@ -46,9 +46,12 @@ def save_decks_to_file(decks: list[Deck], file_name: str = "saved_decks.json") -
     with open(file_name, "w", encoding="utf-8") as file:
         file.write(json_str)
 
-def load_decks_from_file(file_name: str = "saved_decks.json") -> list[Deck]:
+def load_decks_from_file(file_path: str = "") -> list[Deck]:
     try:
-        with open(file_name, "r", encoding="utf-8") as file:
+        if file_path == "":
+            file_path = ui.ui_utils.get_file_path("json (*.json)")
+
+        with open(file_path, "r", encoding="utf-8") as file:
             json_str: str = file.read()
             return json_to_decks(json_str)
     except FileNotFoundError:
