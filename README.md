@@ -10,10 +10,13 @@
 [mainkaavio.md](https://github.com/leevitukia/ot-harjoitustyo/blob/main/laskarit/viikko3/mainkaavio.md)\
 
 ### Tuntikirjanpito
-[tuntikirjanpito.md](https://github.com/leevitukia/ot-harjoitustyo/blob/main/dokumentaatio/tuntikirjanpito.md)
+[tuntikirjanpito.md](https://github.com/leevitukia/ot-harjoitustyo/blob/main/dokumentaatio/tuntikirjanpito.md)\
 
 ### Changelog
-[changelog.md](https://github.com/leevitukia/ot-harjoitustyo/blob/main/dokumentaatio/changelog.md)
+[changelog.md](https://github.com/leevitukia/ot-harjoitustyo/blob/main/dokumentaatio/changelog.md)\
+
+### Releases
+[Releases](https://github.com/leevitukia/ot-harjoitustyo/releases)
 
 ## How to run the program
 - Clone the repo
