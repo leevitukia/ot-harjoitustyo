@@ -43,4 +43,9 @@ class DecksView(QWidget):
                                              self.parent.show_answer_card_view(idx))
             deck_layout.addWidget(exact_answer_btn)
 
+            edit_btn = QPushButton("Edit")
+            edit_btn.clicked.connect(lambda _, idx=i: self.parent.show_deck(idx, True))
+            deck_layout.addWidget(edit_btn)
+
+
             self.decks_container.addLayout(deck_layout)

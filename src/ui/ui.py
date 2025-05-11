@@ -56,9 +56,12 @@ class FlashcardApp(QMainWindow):
         self.decks_view.refresh_deck_list()
         self.stack.setCurrentWidget(self.decks_view)
 
-    def show_deck(self, index: int):
+    def show_deck(self, index: int, edit_mode=False):
         self.card_view.set_deck(self.decks[index])
-        self.card_view.show_card(0)
+        if edit_mode:
+            self.card_view.edit_card(0)
+        else:
+            self.card_view.show_card(0)
         self.stack.setCurrentWidget(self.card_view)
 
     def show_create_card_view(self, deck: Deck, card_type: CardType):
