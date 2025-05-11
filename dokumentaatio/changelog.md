@@ -23,3 +23,8 @@
 - Added a mode where you answer the flashcards by typing the answer
 - Added a very basic algorithm for showing cards that you answer incorrectly often first.
 - Prevented empty decks and cards with blank fields from being created
+
+## Final release
+
+- Added a way to edit decks
+- Fixed issues with multiple choice flashcards

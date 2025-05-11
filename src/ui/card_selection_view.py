@@ -5,6 +5,15 @@ from entities.deck import Deck
 from entities.flash_card import CardType
 
 class CardSelectionView(QWidget):
+    """
+    A view for selecting the type of a flashcard during its creation
+
+    Attributes:
+        parent: The parent of the view
+        deck: The deck that the current card is a part of
+        view_layout: the layout of the widget
+        content_layout: the layout for the content of the view
+    """
     def __init__(self, parent):
         super().__init__()
         self.parent = parent
@@ -35,4 +44,9 @@ class CardSelectionView(QWidget):
 
 
     def set_deck(self, deck: Deck):
+        """
+        Sets the active deck of the view
+        Args:
+            deck: the deck to set as active
+        """
         self.deck = deck

@@ -61,8 +61,8 @@ def save_decks_to_file(decks: list[Deck], file_name: str = "saved_decks.json") -
     Converts a list of decks to JSON and saves them to a file
     Args:
         decks: the list of decks to save
-        file_name: the file path of the JSON file, defaults to saved_decks.json in the working directory
-    """
+        file_name: the file path of the JSON file, defaults to saved_decks.json in the working directory 
+    """ #pylint: disable=line-too-long
     json_str: str = decks_to_json(decks)
     with open(file_name, "w", encoding="utf-8") as file:
         file.write(json_str)

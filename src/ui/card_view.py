@@ -9,6 +9,18 @@ from ui.ui_utils import clear_layout, create_alert
 import random
 
 class CardView(QWidget):
+    """
+    A view for a single card
+
+    Attributes:
+        parent: The parent of the view
+        deck: The deck that the current card is a part of
+        current_index: the position of the current card in the deck
+        flipped: whether or not the displayed card is flipped
+        view_layout: the layout of the widget
+        card_layout: the layout for elements related to the card
+        nav_buttons: the layout for the next and previous card buttons
+    """
     def __init__(self, parent):
         super().__init__()
         self.parent = parent
@@ -28,6 +40,11 @@ class CardView(QWidget):
         self.setLayout(self.view_layout)
 
     def show_card(self, index: int):
+        """
+        Shows the card at the specified index
+        Args:
+            index: the index of the card to show
+        """
         clear_layout(self.card_layout)
         card: FlashCard = self.deck.cards[index]
         self.current_index = index
@@ -51,6 +68,11 @@ class CardView(QWidget):
         self._create_nav_buttons()
 
     def _flip_card(self, answered_correctly: bool = False):
+        """
+        Flips the card and alters the text based on if the user answered correctly or not
+        Args:
+            answered_correctly: whether or not the user answered correctly, defaults to False
+        """
         card: FlashCard = self.deck.cards[self.current_index]
         self.flipped = not self.flipped
         if not isinstance(card, MultipleChoiceFlashCard):
@@ -67,6 +89,11 @@ class CardView(QWidget):
             self.card_layout.addWidget(label)
 
     def edit_card(self, index: int):
+        """
+        Edits the card at the specified index
+        Args:
+            index: the index of the card to edit
+        """
         clear_layout(self.card_layout)
         card: FlashCard = self.deck.cards[index]
         self.current_index = index
@@ -115,7 +142,15 @@ class CardView(QWidget):
         self._create_nav_buttons(edit=True)
 
     def _update_card(self, index: int, question: str, 
-                     answer: str, options: list[str]):
+                     answer: str, options: list[str] = None):
+        """
+        Updates the attributes of the card at the specified index
+        Args:
+            index: the index of the card
+            question: the updated question
+            answer: the updated answer
+            options: the updated options, defaults to None
+        """
         card: FlashCard = self.deck.cards[index]
         qna_empty: bool = "" in [question.strip(), answer.strip()]
         options_empty = card.type == CardType.MULTIPLE_CHOICE and "" in [option.strip() for option in options]
@@ -129,12 +164,17 @@ class CardView(QWidget):
         card.answer = answer
         if isinstance(card, MultipleChoiceFlashCard):
             card.choices = options
-        self.deck.cards[index] = card
+        self.deck.cards[index] = card # necessary because list items apparently aren't passed by reference
 
     def set_deck(self, deck: Deck):
         self.deck = deck
 
     def _create_nav_buttons(self, edit = False):
+        """
+        Creates navigation buttons for the view
+        Args:
+            edit: if set to true the buttons will point to the edit view instead of the normal card view
+        """
         clear_layout(self.nav_buttons)
         if self.current_index > 0:
             prev_btn = QPushButton("Previous card")

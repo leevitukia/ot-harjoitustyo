@@ -7,6 +7,19 @@ from entities.flash_card import FlashCard
 from ui.ui_utils import clear_layout
 
 class AnswerCardView(QWidget):
+    """
+    A view for answering a flashcard
+
+    Attributes:
+        parent: The parent of the view
+        deck: The deck that the current card is a part of
+        sorted_map: a hashmap that converts unsorted indices to sorted ones
+        current_index: the position of the current card in the deck
+        flipped: whether or not the displayed card is flipped
+        view_layout: the layout of the widget
+        card_layout: the layout for elements related to the card
+        nav_buttons: the layout for the next and previous card buttons
+    """
     def __init__(self, parent):
         super().__init__()
         self.parent = parent
