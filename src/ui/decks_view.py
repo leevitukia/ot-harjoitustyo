@@ -34,7 +34,7 @@ class DecksView(QWidget):
             deck_label = QLabel(name)
             deck_layout.addWidget(deck_label)
 
-            flip_btn = QPushButton("Flip / multiple choice") #TODOO give stuff smarter names
+            flip_btn = QPushButton("Flip / multiple choice")
             flip_btn.clicked.connect(lambda _, idx=i: self.parent.show_deck(idx))
             deck_layout.addWidget(flip_btn)
 

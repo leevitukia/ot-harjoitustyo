@@ -46,12 +46,12 @@ class CreateCardView(QWidget):
         question_layout.addWidget(question_input)
         self.content_layout.addLayout(question_layout)
 
-        answer_inputs = []
+        answer_inputs: list[QLineEdit] = []
 
         click_lambda = lambda: self._add_card_to_deck(
             question_input.text(),
             correct_answer_input.text(),
-            answer_inputs
+            [answer.text() for answer in answer_inputs]
             )
 
         answer_layout = QHBoxLayout()
@@ -90,8 +90,7 @@ class CreateCardView(QWidget):
             if "" in [answer.strip() for answer in answer_inputs]:
                 create_alert("Can't create a card with blank fields")
                 return
-            choices = [input.text() for input in answer_inputs]
-            card = MultipleChoiceFlashCard(question, choices, correct_answer)
+            card = MultipleChoiceFlashCard(question, answer_inputs, correct_answer)
 
         self.deck.add_card(card)
         self.parent.show_create_deck_view(self.deck)

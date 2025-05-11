@@ -6,6 +6,7 @@ from PySide6.QtWidgets import (QWidget, QPushButton, # pylint: disable=no-name-i
 from entities.deck import Deck
 from entities.flash_card import FlashCard, MultipleChoiceFlashCard, CardType
 from ui.ui_utils import clear_layout, create_alert
+import random
 
 class CardView(QWidget):
     def __init__(self, parent):
@@ -37,7 +38,9 @@ class CardView(QWidget):
         else:
             label = QLabel(card.question)
             self.card_layout.addWidget(label)
-            for option in card.choices:
+            options = card.choices[:] # clones the list
+            random.shuffle(options) # shuffles the options so that it isn't obvious which one is correct
+            for option in options:
                 btn = QPushButton(option)
                 correct_answer: bool = option == card.answer
                 btn.clicked.connect(lambda _, a=correct_answer:
@@ -91,8 +94,8 @@ class CardView(QWidget):
                                 answer_input.text(), 
                                 None))
         else:
-            option_inputs: list[QLineEdit] = []
-            for i, option in enumerate(card.choices):
+            option_inputs: list[QLineEdit] = [answer_input]
+            for i, option in enumerate(card.choices[1:]):
                 option_layout = QHBoxLayout()
                 option_label = QLabel(f"Option {i + 2}:")
                 option_input = QLineEdit(option)

@@ -5,7 +5,7 @@ from entities.deck import Deck
 from ui.ui_utils import create_alert
 
 class CreateDeckView(QWidget):
-    def __init__(self, parent): # TODO_: split to multiple functions
+    def __init__(self, parent):
         super().__init__()
         self.parent = parent
         self.deck = None
